@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: ws_vms_cloud_gateway
+  cloud:
+    gateway:
+      routes:
+        - id: ws-vms-registration
+          uri: lb://ws-vms-registration
+          predicates:
+            - Path=/registrationservices/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: ws-vms-registration
+                fallbackuri: forward:/registrationfallback
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-uri:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+
+server:
+  port: 8089
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeInMilliseconds: 5000
+
+

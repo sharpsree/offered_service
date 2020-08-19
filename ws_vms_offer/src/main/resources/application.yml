@@ -1,0 +1,16 @@
+server:
+  port: 8088
+  servlet:
+    context-path: /offerservices
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/vehicledb
+    username: root
+    password: pass@word1
+logging:
+  file: app.log
+  pattern:
+    file: "%d{yyyy-MM-dd } [%thread] %-5level %logger{36} - %msg%n"
