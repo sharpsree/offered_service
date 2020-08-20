@@ -34,7 +34,7 @@ public class OfferedServicesController {
     }
 
     @GetMapping("/servicedetails/{serviceId}")
-    public ResponseEntity<ServiceDetails> findOfferDTO(@PathVariable Integer serviceId) {
+    public ResponseEntity<ServiceDetails> getServiceDetails(@PathVariable Integer serviceId) {
         log.info(" Book Service");
         return new ResponseEntity<>(offeredServicesService.getServiceDetails(serviceId), HttpStatus.OK);
     }

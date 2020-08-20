@@ -1,7 +1,7 @@
 package com.vms.offer.service;
 
 import com.vms.offer.dto.OfferDTO;
-import com.vms.offer.entity.Offer;
+import com.vms.offer.entity.OfferDetails;
 import com.vms.offer.mapper.OfferMapper;
 import com.vms.offer.repository.OfferRepository;
 import org.springframework.stereotype.Service;
@@ -24,26 +24,26 @@ public class OfferService {
     }
 
     public List<OfferDTO> fetchAllOffers(){
-        List<Offer> offers = offerRepository.findAll();
+        List<OfferDetails> offers = offerRepository.findAll();
         return Optional.ofNullable(offers).orElseGet(Collections::emptyList).parallelStream()
                 .filter(Objects::nonNull).map(offerMapper::convertOfferToOfferDTO)
                 .collect(Collectors.toList());
     }
 
     public List<OfferDTO> offerdetails(List<Integer> offerIds){
-        List<Offer> offers = offerRepository.findAllById(offerIds);
+        List<OfferDetails> offers = offerIds.stream().map(offerRepository::getOne).collect(Collectors.toList());
         return Optional.ofNullable(offers).orElseGet(Collections::emptyList).parallelStream()
                 .filter(Objects::nonNull).map(offerMapper::convertOfferToOfferDTO)
                 .collect(Collectors.toList());
     }
 
-    public Offer createOffer(Offer offer){
+    public OfferDetails createOffer(OfferDetails offer){
         return offerRepository.save(offer);
     }
 
     public OfferDTO fetchOfferById(Integer offerId){
         OfferDTO offerDTO = null;
-        Offer offer = offerRepository.getOne(offerId);
+        OfferDetails offer = offerRepository.getOne(offerId);
         if(offer != null){
             offerDTO = offerMapper.convertOfferToOfferDTO(offer);
         }

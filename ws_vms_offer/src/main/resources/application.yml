@@ -3,6 +3,8 @@ server:
   servlet:
     context-path: /offerservices
 spring:
+  application:
+    name: ws-vms-offer
   jpa:
     hibernate:
       ddl-auto: none
@@ -10,7 +12,12 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/vehicledb
     username: root
     password: pass@word1
-logging:
-  file: app.log
-  pattern:
-    file: "%d{yyyy-MM-dd } [%thread] %-5level %logger{36} - %msg%n"
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-uri:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost

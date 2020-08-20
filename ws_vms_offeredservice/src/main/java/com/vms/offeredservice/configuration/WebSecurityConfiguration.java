@@ -26,6 +26,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.authorizeRequests()
+                .antMatchers(HttpMethod.GET,"/")
+                .permitAll()
                 .antMatchers("/swagger-ui.html")
                 .permitAll()
                 .and().sessionManagement()

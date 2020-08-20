@@ -1,24 +1,23 @@
 package com.vms.offer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Data
-@Table(name="Offer", schema = "vms")
+@Table(name="Offerdetails", schema = "vms")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Offer implements Serializable{
+public class OfferDetails {
 
-    @Column(name="Offerid")
+    @Column(name="Offerdetailsid")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer offerId;
+    private Integer offerdetailsId;
 
     @Column(name="Offertype")
     private String offerType;
@@ -31,5 +30,4 @@ public class Offer implements Serializable{
 
     @Column(name="Offerendtdate")
     private LocalDate offerEndtDate;
-
 }

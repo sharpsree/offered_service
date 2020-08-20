@@ -1,9 +1,8 @@
 package com.vms.registration.controller;
 
-//import com.vms.registration.entity.Customer;
 import com.vms.registration.entity.CustomerDetails;
 import com.vms.registration.service.RegistrationService;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Min;
 
-@Slf4j
+@Log4j2
 @RestController
 @Validated
 public class RegistrationController {
@@ -21,24 +20,6 @@ public class RegistrationController {
     public RegistrationController(RegistrationService registrationService){
         this.registrationService = registrationService;
     }
-
-  /*  //@PostMapping ("/registercustomer")
-    public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer) {
-        log.info(" Register Customer");
-        return new ResponseEntity<>(registrationService.registerCustomer(customer), HttpStatus.CREATED);
-    }
-
-    //@GetMapping("/findcustomer/{loginid}")
-    public ResponseEntity<Customer> findCustomer(@PathVariable  @Min(1) Integer loginid) {
-        log.info(" find CustomerDetails  for loginid: {}", loginid);
-        return new ResponseEntity<>(registrationService.findCustomer(loginid), HttpStatus.OK);
-    }
-
-   // @PutMapping("/updatecustomer")
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-        log.info(" Update Customer");
-        return new ResponseEntity<>(registrationService.updateCustomer(customer), HttpStatus.ACCEPTED);
-    }*/
 
     @PostMapping ("/registercustomerdetails")
     public ResponseEntity<CustomerDetails> registerCustomerDetails(@RequestBody CustomerDetails customer) {

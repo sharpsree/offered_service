@@ -22,4 +22,4 @@ spring:
     username: root
     password: pass@word1
 offer:
-  baseurl: http://localhost:8088/offerservices
+  baseurl: http://ws-vms-offer/offerservices

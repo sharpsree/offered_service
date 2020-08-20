@@ -1,7 +1,7 @@
 package com.vms.offer.controller;
 
 import com.vms.offer.dto.OfferDTO;
-import com.vms.offer.entity.Offer;
+import com.vms.offer.entity.OfferDetails;
 import com.vms.offer.service.OfferService;
 import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
@@ -28,12 +28,12 @@ public class OfferController {
     }
 
     @PostMapping("/createoffer")
-    public ResponseEntity<Offer> createoffer(@RequestBody Offer offer) {
+    public ResponseEntity<OfferDetails> createoffer(@RequestBody OfferDetails offer) {
         return new ResponseEntity<>(offerService.createOffer(offer), HttpStatus.OK);
     }
 
     @PostMapping("/offerdetails")
-    public ResponseEntity<List<OfferDTO>> offerdetails(List<Integer> offerIds) {
+    public ResponseEntity<List<OfferDTO>> offerdetails(@RequestBody List<Integer> offerIds) {
         return new ResponseEntity<>(offerService.offerdetails(offerIds), HttpStatus.OK);
     }
 
