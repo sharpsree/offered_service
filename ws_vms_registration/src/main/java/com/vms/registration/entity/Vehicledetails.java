@@ -24,7 +24,7 @@ public class Vehicledetails {
     private String vehicleMake;
 
     @JsonIgnore
-    @ManyToOne(targetEntity = Vehicledetails.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = CustomerDetails.class, cascade = CascadeType.ALL)
     @JoinTable(
             name = "customer_vehicle",
             joinColumns = @JoinColumn(name = "Vinnumber"),

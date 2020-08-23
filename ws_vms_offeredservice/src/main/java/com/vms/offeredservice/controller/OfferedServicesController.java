@@ -22,9 +22,10 @@ public class OfferedServicesController {
     }
 
     @GetMapping("/findservicehistory")
-    public ResponseEntity<List<ServiceDTO>> findServiceHistory(@RequestParam Integer vinNumber) {
+    public ResponseEntity<List<ServiceDTO>> findServiceHistory(@RequestParam Integer vinNumber,
+             @RequestParam(required = false) String version) {
         log.info(" Book Service");
-        return new ResponseEntity<>(offeredServicesService.findServiceHistory(vinNumber), HttpStatus.OK);
+        return new ResponseEntity<>(offeredServicesService.findServiceHistory(vinNumber, version), HttpStatus.OK);
     }
 
     @GetMapping("/findoffer")

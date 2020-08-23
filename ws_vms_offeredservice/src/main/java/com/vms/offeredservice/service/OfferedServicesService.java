@@ -9,6 +9,7 @@ import com.vms.offeredservice.properties.OfferProperties;
 import com.vms.offeredservice.repository.ServiceDetailsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,13 +29,14 @@ public class OfferedServicesService {
     private final OfferProperties offerProperties;
     private final ServiceDetailsRepository serviceDetailsRepository;
 
-    public List<ServiceDTO> findServiceHistory(Integer vinNumber){
+    public List<ServiceDTO> findServiceHistory(Integer vinNumber, String version){
         List<ServiceDetails> offeredServices = serviceDetailsRepository.findByVinNumber(vinNumber);
         List<ServiceDTO> serviceDTOs = offeredServiceMapper.converServicesToServiceDTOs(offeredServices);
         Optional.ofNullable(serviceDTOs).orElseGet(Collections::emptyList).stream().filter(Objects::nonNull)
                 .filter(service->service.getOfferIds() != null)
                 .forEach(service->{
                     service.setOffers(findOfferDTOs(service.getOfferIds()));
+                    service.setIsInvoiced(StringUtils.isEmpty(version)? null: "No");
                 });
         return serviceDTOs;
     }

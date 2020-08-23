@@ -21,4 +21,6 @@ public class ServiceDTO implements Serializable {
     private Date serviceDate;
 
     private List<OfferDTO> offers;
+
+    private String isInvoiced;
 }

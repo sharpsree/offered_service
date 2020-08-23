@@ -45,7 +45,7 @@ public class OfferedServicesServiceTest {
         ServiceDTO serviceDTO = new ServiceDTO();
         serviceDTOs.add(serviceDTO);
         when(offeredServiceMapper.converServicesToServiceDTOs(any())).thenReturn(serviceDTOs);
-       List<ServiceDTO> response = offeredServicesService.findServiceHistory(1);
+       List<ServiceDTO> response = offeredServicesService.findServiceHistory(1, "v2");
        verify(serviceDetailsRepository, times(1)).findByVinNumber(1);
        assertFalse(response.isEmpty());
     }

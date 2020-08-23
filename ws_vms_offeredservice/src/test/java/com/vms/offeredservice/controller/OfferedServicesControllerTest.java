@@ -34,9 +34,9 @@ public class OfferedServicesControllerTest {
         List<ServiceDTO> serviceDTOs = new ArrayList<>();
         ServiceDTO serviceDTO = new ServiceDTO();
         serviceDTOs.add(serviceDTO);
-        when(offeredServicesService.findServiceHistory(any())).thenReturn(serviceDTOs);
-        ResponseEntity<List<ServiceDTO>> response = offeredServicesController.findServiceHistory(1);
-        verify(offeredServicesService, times(1)).findServiceHistory(any());
+        when(offeredServicesService.findServiceHistory(any(),any())).thenReturn(serviceDTOs);
+        ResponseEntity<List<ServiceDTO>> response = offeredServicesController.findServiceHistory(1, "v2");
+        verify(offeredServicesService, times(1)).findServiceHistory(any(),any());
         assertFalse(response.getBody().isEmpty());
     }
 

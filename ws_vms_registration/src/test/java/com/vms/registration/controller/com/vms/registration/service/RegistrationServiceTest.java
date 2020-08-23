@@ -10,6 +10,9 @@ import org.mockito.Mock;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -24,10 +27,12 @@ public class RegistrationServiceTest {
 
     @Test
     public void findCustomerDetailsTest() {
+        List<CustomerDetails> customerDetail = new ArrayList<>();
         CustomerDetails customerDetails = new CustomerDetails();
         customerDetails.setCustomerId(2);
         customerDetails.setCustomerName("Raju");
-        when(customerDetailsRepository.findByLogInId(any())).thenReturn(customerDetails);
+        customerDetail.add(customerDetails);
+        when(customerDetailsRepository.findByLogInId(any())).thenReturn(customerDetail);
         CustomerDetails response = registrationService.findCustomerDetails(3);
         verify(customerDetailsRepository, times(1)).findByLogInId(any());
         assertNotNull(response);

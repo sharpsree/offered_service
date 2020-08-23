@@ -11,9 +11,8 @@ public class RegistrationService {
     private final CustomerDetailsRepository customerDetailsRepository;
 
     public CustomerDetails findCustomerDetails(Integer loginid){
-        return customerDetailsRepository.findByLogInId(loginid);
+        return customerDetailsRepository.findByLogInId(loginid).stream().findFirst().orElse(null);
     }
-
 
     public CustomerDetails registerCustomerDetails(CustomerDetails customer){
         return customerDetailsRepository.save(customer);
