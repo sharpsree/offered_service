@@ -1,1 +1,139 @@
+/*
+create table test(
+   test_id INT NOT NULL AUTO_INCREMENT,
+   test_name VARCHAR(10) NOT NULL,
+   PRIMARY KEY ( test_id )
+);
+
+
+INSERT INTO test(test_name)
+VALUES ('sree');
+
+use vms;
+
+create table Users(
+   VehicleId INT(11) NOT NULL AUTO_INCREMENT,
+
+   Password VARCHAR(64) NOT NULL,
+   
+Role VARCHAR(15) NOT NULL,
+   
+Enabled tinyint(4) Default NULL,
+   PRIMARY KEY ( VehicleId )
+);
+
+INSERT INTO Users(loginid, Password, Role, Enabled)
+VALUES (222,'$2a$10$zxvEq8XzYEYtNjbkRsJEbukHeRx3XS6MDXHMu8cNuNsRfZJWwswDy', 'ROLE_ADMIN', 1);
+
+CREATE TABLE Customer(
+CustomerId int(11) NOT NULL AUTO_INCREMENT,
+VehicleId INT(11) NOT NULL,
+CustomerName VARCHAR(20) NOT NULL,
+Address VARCHAR(25) NULL,
+State VARCHAR(10) NULL,
+Country VARCHAR(10) NULL,
+EmailId VARCHAR(20) NOT NULL,
+ContactNumber VARCHAR(12) NOT NULL,
+PRIMARY KEY (CustomerId),
+CONSTRAINT FK_Users FOREIGN KEY (VehicleId)
+REFERENCES Users(VehicleId)
+);
+
+CREATE TABLE Offer(
+OfferId int NOT NULL AUTO_INCREMENT,
+OfferType VARCHAR(20) NOT NULL,
+OfferPercentage DECIMAL(2,2) NOT NULL,
+OfferStartDate DATE NOT NULL,
+OfferEndtDate DATE NOT NULL,
+PRIMARY KEY (OfferId)
+);
+
+CREATE TABLE Vehicle(
+VinNumber int NOT NULL AUTO_INCREMENT,
+CustomerId int NULL,
+VehicleModel VARCHAR(20) NOT NULL,
+VehicleMake VARCHAR(20) NOT NULL,
+PRIMARY KEY (VinNumber),
+CONSTRAINT FK_Customer FOREIGN KEY (CustomerId)
+REFERENCES Customer(CustomerId)
+);
+
+CREATE TABLE Service(
+ServiceId int NOT NULL AUTO_INCREMENT,
+VinNumber int NOT NULL,
+OfferId int NULL,
+ServiceDate DATE NULL,
+PRIMARY KEY (ServiceId),
+CONSTRAINT FK_Vehicle FOREIGN KEY (VinNumber)
+REFERENCES Vehicledetails(VinNumber),
+CONSTRAINT FK_Offer FOREIGN KEY (OfferId)
+REFERENCES Offer(OfferId)
+);
+
+CREATE TABLE Offer(
+OfferId int NOT NULL AUTO_INCREMENT,
+OfferType VARCHAR(20) NOT NULL,
+OfferPercentage DECIMAL(4,2) NOT NULL,
+OfferStartDate DATE NOT NULL,
+OfferEndtDate DATE NOT NULL,
+PRIMARY KEY (OfferId)
+);
+INSERT INTO Offer(OfferType, OfferPercentage, OfferStartDate, OfferEndtDate)
+VALUES ('Monthly', 10.00, '2020-8-01', '2008-9-01');
+NSERT INTO users (vehicleid, enabled, password, role)VALUES (222, 1, '$2a$10$zxvEq8XzYEYtNjbkRsJEbukHeRx3XS6MDXHMu8cNuNsRfZJWwswDy', 'USER_ADMIN');
+
+UPDATE users 
+SET Password = 
+WHERE VehicleId=1;
+
+{
+  "vehicleId": 1,
+  "customerName": "Raju",
+  "address": "chennai",
+  "state": "TN",
+  "country": "India",
+  "emailId": "raju@test.com",
+  "contactNumber": 12345,
+  "vehicles": [
+    {
+      "vehicleModel": "q7",
+      "vehicleMake": "Audi"
+    }
+  ]
+}
+
+{
+    "customerId": 1,
+    "vehicleId": 1,
+    "customerName": "Raju",
+    "address": "thoraipakkam",
+    "state": "TN",
+    "country": "India",
+    "emailId": "raju@test.com",
+    "contactNumber": 12345,
+    "vehicles": [
+        {
+            "vehicleModel": "q8",
+            "vehicleMake": "Audi",
+            "customerId": 1,
+            "vinNumber": 1
+        }
+    ]
+}
+
+http://localhost:8086/bookservice
+{
+  "vinNumber": 1,
+  "serviceDate": "2020-9-20"
+}
+http://localhost:8086/applyoffer
+{
+    "serviceId": 2,
+    "vinNumber": 1,
+    "offerId": 1,
+    "serviceDate": "2020-09-20"
+}
+
+
+    */
 
