@@ -1,0 +1,48 @@
+/*
+1.Entity field validatios with the help of Javax-Validation API(Customer.class)
+2.Getter setters generation with lombok
+3.Explicite declaration of user defined dependencies <artifactId>lib_vms_offer_dto</artifactId>
+4.Object conversion with the help of Mapstruct(OfferMapper)
+5.Usage of java8 ParallelStream, Optional, Method References, Collectors(OfferService)
+FuctionalInterface(OfferMapper)
+streams, filters, foreach, orElseGet(OfferedServicesService)
+6.Communication between microservices with RestTemplate(OfferedServicesService)
+7.Reading config properties with @value (OfferProperties)
+8.Swagger implementation
+9.logging with lambok
+10.log tracing with spring sleuth
+11.Basic Authentication with spring security
+12.hierarchy level properties representation with .yml(ws_vms_offer)
+13.centralised configuartion with spring cloud config server(ws_vms_config_server)
+http://localhost:8888/ws_vms_offeredservice/default
+14.config client wit external configuration (ws_vms_offeredservices)
+15.Content Negotiation with jackson-dataformat-xml(ws_vms_registartion)
+http://localhost:8087/registrationservices/findvehicle/222
+Accept application/xml
+16.Pathvariable validation with @Validated (RegistrationController)
+17.health checks with spring-actuator
+
+updated the table structure with one service to many offers mapping and separate mapping table
+1.Circuit breaker with @EnabbleCircuitBreaker
+2.Microservices Discovery with Eureka client
+3.Service Resitry with Eureka server
+4.API Gate way - spring clod gate way
+5.12-factors principles
+Codebase: individuals code base
+Dependencies: isolate dependencies are used
+Config: externalised the configuration properties
+Backingservices: fall back mechanism
+Processes: stateless programing
+Port binding: port binding done in services 
+Dev/prod parity: maintained exact code copy from local to git
+Logs: with log4j - C:\Users\javacloudmc162\IdeaProjects\logs
+6.Authentication
+7.PostMan usage
+8.Gitlab Repo - 
+9.code smells - with the help of sonar quebe
+10 Test cases - Junit
+11.Coding Standards - Naming standards for variable, classes, methods
+package separation, external configurations
+12.Api versioning
+
+*/
